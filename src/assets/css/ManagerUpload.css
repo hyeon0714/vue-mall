@@ -9,6 +9,7 @@ textarea, button, form {margin: 0; padding: 0;}
 
 #contentNav{
     width: 300px;
+    height: 1000px;
     float: left;
     text-align: center;
 }
@@ -84,3 +85,11 @@ a{
     width: 263px;
 }
 
+#chartContent{
+    width: 470px;
+    float: left;
+}
+
+#chart{
+    width: 300px;
+}

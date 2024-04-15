@@ -11,9 +11,13 @@
 
     <div id="contentMain">
       <div id="graph">
-        <p>통계</p>
-        <p>여기에 그래프나 데이터 값 넣기</p>
-        <canvas ref="MyChart" />
+        <h3>통계</h3>
+        <div id="chartContent">
+          <p>총 판매량: <span>100</span></p>
+          <p>금일 판매량: <span>100</span></p>
+        </div>
+        
+        <canvas id="chart" ref="MyChart" />
       </div>
       <div class="clearfix">
 
@@ -100,10 +104,10 @@ export default {
   data:() => ({
     type: 'doughnut',
     data: {
-      labels: [ '총판매량', '총침대', '총쇼파', '총책상'],
+      labels: ['총침대', '총쇼파', '총책상'],
       datasets: [{
         label: '집꾸며죠 판매량',
-        data: [ 12, 19, 3, 5, 2, 3 ],
+        data: [ 12, 19, 3 ],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -122,12 +126,15 @@ export default {
       }]
     },
     options: {
-      scales: {
-        y: {
-          beginAtZero: true
+    responsive : false, 
+    plugins: {
+      
+        title: {
+            display: true,
+            text: '총 판매비율'
         }
-      }
     }
+}
   }),
   mounted(){
     this.createChart()
@@ -135,7 +142,7 @@ export default {
   methods:{
     createChart(){
       new Chart(this.$refs.MyChart, {
-        type:'bar',
+        type:'doughnut',
         data:this.data,
         options:this.options
       })
